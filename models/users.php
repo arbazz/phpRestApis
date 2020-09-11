@@ -140,4 +140,22 @@
          $this->udp = $row['udp'];
       }
 
+      public function upload_dp_user(){
+        $file = "-aloo" . "_" . basename($_FILES['image']['name']);
+
+        $tmp_name = $_FILES['image']['tmp_name'];
+       
+       if(move_uploaded_file($tmp_name,"../docs/".$file)){
+         echo json_encode([
+           "Message" => "The file has been uploaded",
+           "Status" => "OK"
+           ]);
+       }else{
+         echo json_encode([
+           "Message" => "sorry",
+           "Status" => $file
+           ]);
+       }
+              
+      }
   }
